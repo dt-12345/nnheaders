@@ -3,6 +3,7 @@
 #include <nn/gfx/detail/gfx_DataContainer.h>
 #include <nn/gfx/gfx_BufferData-api.nvn.8.h>
 #include <nn/gfx/gfx_Common.h>
+#include <nn/nn_BitTypes.h>
 #include <nn/types.h>
 
 namespace nn::gfx {
@@ -23,6 +24,7 @@ public:
     static const bool IsMemoryPoolRequired = true;
 
     static size_t GetBufferAlignment(DeviceImpl<ApiVariationNvn8>*, const InfoType&);
+    static size_t GetBufferAlignment(DeviceImpl<ApiVariationNvn8>*, Bit32);
 
     BufferImpl();
     ~BufferImpl();

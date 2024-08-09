@@ -10,9 +10,31 @@ add_library(NintendoSDK OBJECT
   include/nn/os.h
   include/nn/nifm.h
   include/nn/prepo.h
-  include/nn/vfx/Config.h
-  include/nn/vfx/System.h
-  include/nn/vfx/Heap.h
+  include/nn/vfx2/detail/BinaryData.h
+  include/nn/vfx2/detail/BufferALlocator.h
+  include/nn/vfx2/detail/ConstantBuffer.h
+  include/nn/vfx2/detail/DebugPrint.h
+  include/nn/vfx2/detail/EmitterCalculator.h
+  include/nn/vfx2/detail/Mutex.h
+  include/nn/vfx2/detail/ParticleData.h
+  include/nn/vfx2/detail/Random.h
+  include/nn/vfx2/detail/RenderContext.h
+  include/nn/vfx2/detail/ResEmitterSet.h
+  include/nn/vfx2/detail/Shader.h
+  include/nn/vfx2/detail/ShaderManager.h
+  include/nn/vfx2/detail/StripeAllocator.h
+  include/nn/vfx2/detail/StripeSystem.h
+  include/nn/vfx2/detail/SuperStripeSystem.h
+  include/nn/vfx2/Config.h
+  include/nn/vfx2/Emitter.h
+  include/nn/vfx2/EmitterResource.h
+  include/nn/vfx2/EmitterSet.h
+  include/nn/vfx2/EmitterSetResource.h
+  include/nn/vfx2/Handle.h
+  include/nn/vfx2/Heap.h
+  include/nn/vfx2/Resource.h
+  include/nn/vfx2/System.h
+  include/nn/vfx2/TemporaryBuffer.h
   include/nn/socket.h
   include/nn/aoc.h
   include/nn/ro.h
@@ -33,20 +55,20 @@ add_library(NintendoSDK OBJECT
   include/nn/ui2d/Parts.h
   include/nn/ui2d/Pane.h
   include/nn/ui2d/Material.h
-  include/nn/g3d/BindFuncTable.h
-  include/nn/g3d/ModelObj.h
-  include/nn/g3d/ResMaterialAnim.h
-  include/nn/g3d/ResShapeAnim.h
-  include/nn/g3d/ResLightAnim.h
-  include/nn/g3d/ResSkeletalAnim.h
-  include/nn/g3d/ResSceneAnim.h
-  include/nn/g3d/ResFile.h
-  include/nn/g3d/ResMaterial.h
-  include/nn/g3d/ResFogAnim.h
-  include/nn/g3d/ResModel.h
-  include/nn/g3d/ResSkeleton.h
-  include/nn/g3d/SkeletonObj.h
-  include/nn/g3d/World.h
+  include/nn/g3d2/BindFuncTable.h
+  include/nn/g3d2/ModelObj.h
+  include/nn/g3d2/ResMaterialAnim.h
+  include/nn/g3d2/ResShapeAnim.h
+  include/nn/g3d2/ResLightAnim.h
+  include/nn/g3d2/ResSkeletalAnim.h
+  include/nn/g3d2/ResSceneAnim.h
+  include/nn/g3d2/ResFile.h
+  include/nn/g3d2/ResMaterial.h
+  include/nn/g3d2/ResFogAnim.h
+  include/nn/g3d2/ResModel.h
+  include/nn/g3d2/ResSkeleton.h
+  include/nn/g3d2/SkeletonObj.h
+  include/nn/g3d2/World.h
   include/nn/nn.h
   include/nn/settings.h
   include/nn/hid.h

@@ -83,7 +83,7 @@ public:
     static constexpr int InvalidBoneIndex = 0xffff;
 
     ResBone(const ResBone&) = delete;
-    auto operator=(const nn::g3d::ResBone&) = delete;
+    auto operator=(const nn::g3d2::ResBone&) = delete;
 
     int GetIndex() const { return index; }
     const char* GetName() const { return pName.Get()->GetData(); }
@@ -142,7 +142,7 @@ public:
 struct ResSkeletonData {
     nn::util::BinaryBlockHeader blockHeader;
     nn::util::BinTPtr<nn::util::ResDic> pBoneDic;
-    nn::util::BinTPtr<nn::g3d::ResBone> pBoneArray;
+    nn::util::BinTPtr<nn::g3d2::ResBone> pBoneArray;
     nn::util::BinTPtr<short> pMtxToBoneTable;
     nn::util::BinTPtr<nn::util::FloatColumnMajor4x3> pInvModelMatrixArray;
     nn::util::BinPtr pUserPtr;
@@ -155,7 +155,7 @@ struct ResSkeletonData {
     uint8_t reserved2[6];
 };
 
-class ResSkeleton : public nn::util::AccessorBase<nn::g3d::ResSkeletonData> {
+class ResSkeleton : public nn::util::AccessorBase<nn::g3d2::ResSkeletonData> {
 public:
     static constexpr uint32_t Signature = util::MakeSignature('F', 'S', 'K', 'L');
 
@@ -198,14 +198,14 @@ public:
 
     int GetBoneCount() const { return boneCount; }
 
-    nn::g3d::ResBone* FindBone(const char* name) {
+    nn::g3d2::ResBone* FindBone(const char* name) {
         int index = FindBoneIndex(name);
         if (index == util::ResDic::Npos)
             return nullptr;
         return GetBone(index);
     }
 
-    const nn::g3d::ResBone* FindBone(const char* name) const {
+    const nn::g3d2::ResBone* FindBone(const char* name) const {
         int index = FindBoneIndex(name);
         if (index == util::ResDic::Npos)
             return nullptr;
@@ -226,8 +226,8 @@ public:
         return dict->GetKey(index).data();
     }
 
-    nn::g3d::ResBone* GetBone(int index) { return &pBoneArray.Get()[index]; }
-    const nn::g3d::ResBone* GetBone(int index) const { return &pBoneArray.Get()[index]; }
+    nn::g3d2::ResBone* GetBone(int index) { return &pBoneArray.Get()[index]; }
+    const nn::g3d2::ResBone* GetBone(int index) const { return &pBoneArray.Get()[index]; }
 
     int GetMirroredBoneIndex(int index) const { return pMirroringBoneTable.Get()[index]; }
 };

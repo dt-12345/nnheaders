@@ -7,6 +7,8 @@
 #include <algorithm>
 
 #include "gfx_NvnHelper.h"
+#include "nn/gfx/gfx_Common.h"
+#include "nn/nn_BitTypes.h"
 
 namespace nn::gfx::detail {
 
@@ -36,9 +38,9 @@ void SetupTextureBuilder(NVNtextureBuilder* pBuilder, NVNdevice* pDevice,
 }
 }  // namespace
 
+// NON_MATCHING: signed ls instead of lt, missing sxtw
 size_t BufferImpl<ApiVariationNvn8>::GetBufferAlignment(DeviceImpl<ApiVariationNvn8>* pDevice,
-                                                        const BufferInfo& info) {
-    int gpuAccessFlag = info.GetGpuAccessFlags();
+                                                        Bit32 gpuAccessFlag) {
     int alignment = 8;
 
     if (gpuAccessFlag & GpuAccess_ConstantBuffer) {
@@ -74,7 +76,16 @@ size_t BufferImpl<ApiVariationNvn8>::GetBufferAlignment(DeviceImpl<ApiVariationN
         alignment = std::max(alignment, 512);
     }
 
+    if (gpuAccessFlag & GpuAccess_Image) {
+        alignment = std::max(alignment, 16);
+    }
+
     return alignment;
+}
+
+size_t BufferImpl<ApiVariationNvn8>::GetBufferAlignment(DeviceImpl<ApiVariationNvn8>* pDevice,
+                                                        const BufferInfo& info) {
+    return GetBufferAlignment(pDevice, info.GetGpuAccessFlags());
 }
 
 BufferImpl<ApiVariationNvn8>::BufferImpl() {

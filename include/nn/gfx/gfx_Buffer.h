@@ -2,6 +2,8 @@
 
 #include <nn/gfx/detail/gfx_Buffer-api.nvn.8.h>
 #include <nn/gfx/gfx_Common.h>
+#include <nn/types.h>
+#include <nvn/nvn.h>
 
 namespace nn::gfx {
 

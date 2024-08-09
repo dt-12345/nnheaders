@@ -8,14 +8,14 @@
 #include <nn/types.h>
 
 namespace nn {
-namespace g3d {
+namespace g3d2 {
 class ResLightAnim;
 class ResFogAnim;
 struct BindFuncTable;
 
 class ResSceneAnim {
 public:
-    s32 Bind(nn::g3d::BindFuncTable const&);
+    s32 Bind(nn::g3d2::BindFuncTable const&);
     void Release();
     void Reset();
 
@@ -26,9 +26,9 @@ public:
     u64 mPathOffset;                     // _18
     u64 mCameraAnimOffset;               // _20
     u64 mCameraAnimDictOffset;           // _28
-    nn::g3d::ResLightAnim* mLightAnims;  // _30
+    nn::g3d2::ResLightAnim* mLightAnims;  // _30
     u64 mLightAnimDictOffset;            // _38
-    nn::g3d::ResFogAnim* mFogAnims;      // _40
+    nn::g3d2::ResFogAnim* mFogAnims;      // _40
     u64 mFogAnimDictOffset;              // _48
     u64 mUserDataOffset;                 // _50
     u64 mUserDataDictOffset;             // _58
@@ -37,5 +37,5 @@ public:
     u16 mLightAnimCount;                 // _64
     u16 mFogAnimCount;                   // _66
 };
-}  // namespace g3d
+}  // namespace g3d2
 }  // namespace nn

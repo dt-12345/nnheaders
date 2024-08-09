@@ -67,6 +67,10 @@ struct SemaphoreType {
     std::aligned_storage_t<0x28, 8> storage;
 };
 
+struct LightSemaphoreType {
+    std::aligned_storage_t<0x20, 8> storage;
+};
+
 struct SystemEventType {
     enum State {
         State_NotInitialized = 0,
@@ -118,6 +122,25 @@ bool TimedPeekMessageQueue(u64*, MessageQueueType const*);
 bool TryJamMessageQueue(nn::os::MessageQueueType*, u64);
 void JamMessageQueue(nn::os::MessageQueueType*, u64);
 bool TimedJamMessageQueue(nn::os::MessageQueueType*, u64, nn::TimeSpan);
+
+void InitializeLightMessageQueue(nn::os::LightMessageQueueType*, u64* buf, u64 queueCount);
+void FinalizeLightMessageQueue(nn::os::LightMessageQueueType*);
+
+bool TrySendLightMessageQueue(LightMessageQueueType*, u64);
+void SendLightMessageQueue(LightMessageQueueType*, u64);
+bool TimedSendLightMessageQueue(LightMessageQueueType*, u64, nn::TimeSpan);
+
+bool TryReceiveLightMessageQueue(u64* out, LightMessageQueueType*);
+void ReceiveLightMessageQueue(u64* out, LightMessageQueueType*);
+bool TimedReceiveLightMessageQueue(u64* out, LightMessageQueueType*, nn::TimeSpan);
+
+bool TryPeekLightMessageQueue(u64*, LightMessageQueueType const*);
+void PeekLightMessageQueue(u64*, LightMessageQueueType const*);
+bool TimedPeekLightMessageQueue(u64*, LightMessageQueueType const*);
+
+bool TryJamLightMessageQueue(nn::os::LightMessageQueueType*, u64);
+void JamLightMessageQueue(nn::os::LightMessageQueueType*, u64);
+bool TimedJamLightMessageQueue(nn::os::LightMessageQueueType*, u64, nn::TimeSpan);
 
 // CONDITION VARIABLE
 void InitializeConditionVariable(ConditionVariableType*);
@@ -175,6 +198,12 @@ void FinalizeSemaphore(SemaphoreType* semaphore);
 void AcquireSemaphore(SemaphoreType* semaphore);
 bool TryAcquireSemaphore(SemaphoreType* semaphore);
 void ReleaseSemaphore(SemaphoreType* semaphore);
+
+void InitializeLightSemaphore(LightSemaphoreType* semaphore, s32 initial_count, s32 max_count);
+void FinalizeLightSemaphore(LightSemaphoreType* semaphore);
+void AcquireLightSemaphore(LightSemaphoreType* semaphore);
+bool TryAcquireLightSemaphore(LightSemaphoreType* semaphore);
+void ReleaseLightSemaphore(LightSemaphoreType* semaphore);
 
 // EXCEPTION HANDLING
 typedef union {

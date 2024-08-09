@@ -3,7 +3,7 @@
 #include <nn/types.h>
 
 namespace nn {
-namespace g3d {
+namespace g3d2 {
 class ResFogAnim {
 public:
     char mMagic[4];           // _0
@@ -17,5 +17,5 @@ public:
     u64 mNameOffset;          // _14
     u64 mFuncNameOffset;      // _1C
 };
-}  // namespace g3d
+}  // namespace g3d2
 }  // namespace nn

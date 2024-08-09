@@ -2,6 +2,7 @@
 
 #include <nn/gfx/detail/gfx_RequiredMemory.h>
 #include <nn/gfx/detail/gfx_State-api.nvn.8.h>
+#include "nn/gfx/gfx_Common.h"
 
 namespace nn::gfx {
 

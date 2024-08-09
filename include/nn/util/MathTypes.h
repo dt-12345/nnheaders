@@ -39,6 +39,10 @@ struct Float4 {
     };
 };
 
+struct FloatRowMajor4x4 {
+    float m[4][4];
+};
+
 struct FloatColumnMajor4x3 {
     float m[3][4];
 };

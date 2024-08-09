@@ -23,4 +23,18 @@ struct MessageQueueType {
     detail::InternalConditionVariableStorage _cvNotEmpty;
 };
 
+struct LightMessageQueueType {
+    uintptr_t* _buffer;
+    int _maxCount;
+    int _count;
+    int _offset;
+    uint8_t _state;
+    detail::InternalCriticalSectionStorage _csQueue;
+    int _1C;
+    detail::InternalConditionVariableStorage _cvNotFull;
+    int _24;
+    detail::InternalConditionVariableStorage _cvNotEmpty;
+    int _2C;
+};
+
 }  // namespace nn::os
